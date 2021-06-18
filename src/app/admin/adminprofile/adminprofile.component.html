@@ -1,0 +1,123 @@
+<form [formGroup]="profileform" (ngSubmit)="submitform()">
+  <div class="row" style="margin-top: 20px">
+    <!-- Column -->
+    <div class="col-lg-4 col-xlg-3 col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <div class="mt-4">
+            <img [src]="getimage()" class="img-circle" width="150" (click)="userfile.click()" />
+            <h4 class="card-title mt-2">{{ current_user }}</h4>
+            <h6 class="card-subtitle">{{user_position}}</h6>
+            <span style="display:none"><input type="file" (change)="onFileSelect($event)" #userfile /></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Column -->
+    <!-- Column -->
+    <div class="col-lg-8 col-xlg-9 col-md-7">
+      <div class="card">
+        <!-- Tab panes -->
+        <div class="card-body">
+          <div class="form-horizontal form-material mx-2">
+            <div class="form-group">
+              <label class="col-md-12">Full Name</label>
+              <div class="col-md-12">
+                <input
+                  type="text"
+                  placeholder="Johnathan Doe"
+                  class="form-control form-control-line"
+                  formControlName="username"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="example-email" class="col-md-12">Email</label>
+              <div class="col-md-12">
+                <input
+                  type="email"
+                  placeholder="johnathan@admin.com"
+                  class="form-control form-control-line"
+                  name="example-email"
+                  id="example-email"
+                  formControlName="email"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-12">Password</label>
+              <div class="col-md-12">
+                <input
+                  type="password"
+                  value="password"
+                  class="form-control form-control-line"
+                  formControlName="password"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-12">Phone No</label>
+              <div class="col-md-12">
+                <input
+                  type="text"
+                  placeholder="123 456 7890"
+                  class="form-control form-control-line"
+                  formControlName="phone"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-12">Address</label>
+              <div class="col-md-12">
+                <textarea
+                  rows="5"
+                  class="form-control form-control-line"
+                  formControlName="address"
+                ></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-12">Position</label>
+              <div class="col-md-12">
+                <input
+                  type="text"
+                  placeholder="Position"
+                  class="form-control form-control-line"
+                  formControlName="position"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-12">Select Country</label>
+              <div class="col-sm-12">
+                <select
+                  class="form-control form-control-line"
+                  formControlName="country"
+                >
+                  <option
+                    [value]="country.country_name"
+                    *ngFor="let country of country"
+                  >
+                    {{ country.country_name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12">
+                <button
+                  class="btn btn-success"
+                  [disabled]="!profileform.valid"
+                  type="submit"
+                >
+                  Update Profile
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Column -->
+  </div>
+</form>
